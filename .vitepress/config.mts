@@ -16,6 +16,30 @@ export default withMermaid(
       ],
 
       sidebar: {
+        '/blog/event-driven-microservices/': [
+          {
+            text: 'Building Event-Driven Microservices',
+            items: [
+              { text: '시리즈 소개', link: '/blog/event-driven-microservices/' },
+              { text: '1장: 이벤트 기반 마이크로서비스란?', link: '/blog/event-driven-microservices/ch01' },
+            ],
+          },
+        ],
+        '/blog/': [
+          {
+            text: 'Blog',
+            items: [
+              { text: 'Overview', link: '/blog/' },
+            ],
+          },
+          {
+            text: '시리즈',
+            collapsed: false,
+            items: [
+              { text: 'Building Event-Driven Microservices', link: '/blog/event-driven-microservices/' },
+            ],
+          },
+        ],
         '/archive/': [
           {
             text: 'Archive',
