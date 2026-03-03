@@ -73,6 +73,19 @@ export default withMermaid(
             collapsed: false,
             items: [
               { text: 'Overview', link: '/archive/case-studies/' },
+              {
+                text: 'DJ_CAMTIC ERP 안정화',
+                collapsed: true,
+                items: [
+                  { text: '프로젝트 개요', link: '/archive/case-studies/dj-camtic/' },
+                  { text: 'SQL 최적화', link: '/archive/case-studies/dj-camtic/sql-optimization' },
+                  { text: '데이터 정합성 개선', link: '/archive/case-studies/dj-camtic/data-integrity' },
+                  { text: '로깅/모니터링 체계', link: '/archive/case-studies/dj-camtic/logging-monitoring' },
+                  { text: 'CI/CD 파이프라인', link: '/archive/case-studies/dj-camtic/cicd-pipeline' },
+                  { text: '코드 구조·테스트·문서화', link: '/archive/case-studies/dj-camtic/code-quality' },
+                  { text: 'Streamlit 로그 대시보드', link: '/archive/case-studies/dj-camtic/log-dashboard' },
+                ],
+              },
             ],
           },
         ],
