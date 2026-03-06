@@ -16,6 +16,15 @@ export default withMermaid(
       ],
 
       sidebar: {
+        '/blog/plc/': [
+          {
+            text: 'PLC 및 MC Protocol',
+            items: [
+              { text: '시리즈 소개', link: '/blog/plc/' },
+              { text: '1장: PLC 및 MC Protocol 기초', link: '/blog/plc/ch01' },
+            ],
+          },
+        ],
         '/blog/event-driven-microservices/': [
           {
             text: 'Building Event-Driven Microservices',
@@ -37,6 +46,7 @@ export default withMermaid(
             collapsed: false,
             items: [
               { text: 'Building Event-Driven Microservices', link: '/blog/event-driven-microservices/' },
+              { text: 'PLC 및 MC Protocol', link: '/blog/plc/' },
             ],
           },
         ],
