@@ -31,6 +31,7 @@ export default withMermaid(
             items: [
               { text: '시리즈 소개', link: '/blog/event-driven-microservices/' },
               { text: '1장: 이벤트 기반 마이크로서비스란?', link: '/blog/event-driven-microservices/ch01' },
+              { text: '2장: 이벤트와 이벤트 스트림의 기초', link: '/blog/event-driven-microservices/ch02' },
             ],
           },
         ],
