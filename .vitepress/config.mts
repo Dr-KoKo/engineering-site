@@ -35,6 +35,15 @@ export default withMermaid(
             ],
           },
         ],
+        '/blog/ubuntu-server/': [
+          {
+            text: 'Ubuntu Server 관리자 가이드',
+            items: [
+              { text: '시리즈 소개', link: '/blog/ubuntu-server/' },
+              { text: '1장: 서버와 Ubuntu Server의 이해', link: '/blog/ubuntu-server/ch01' },
+            ],
+          },
+        ],
         '/blog/': [
           {
             text: 'Blog',
@@ -48,6 +57,7 @@ export default withMermaid(
             items: [
               { text: 'Building Event-Driven Microservices', link: '/blog/event-driven-microservices/' },
               { text: 'PLC 및 MC Protocol', link: '/blog/plc/' },
+              { text: 'Ubuntu Server 관리자 가이드', link: '/blog/ubuntu-server/' },
             ],
           },
         ],
