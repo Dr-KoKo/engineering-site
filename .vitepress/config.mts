@@ -41,6 +41,7 @@ export default withMermaid(
             items: [
               { text: '시리즈 소개', link: '/blog/ubuntu-server/' },
               { text: '1장: 서버와 Ubuntu Server의 이해', link: '/blog/ubuntu-server/ch01' },
+              { text: '2장: 셸과 Linux 파일시스템', link: '/blog/ubuntu-server/ch02' },
             ],
           },
         ],

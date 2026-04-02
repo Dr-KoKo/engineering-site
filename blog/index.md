@@ -10,7 +10,7 @@ Engineering notes, thoughts, and write-ups.
 |--------|------|
 | [Building Event-Driven Microservices](/blog/event-driven-microservices/) | 2 / 17장 |
 | [PLC 및 MC Protocol](/blog/plc/) | 1 / ?장 |
-| [Ubuntu Server 관리자 가이드](/blog/ubuntu-server/) | 1 / 12장 |
+| [Ubuntu Server 관리자 가이드](/blog/ubuntu-server/) | 2 / 12장 |
 
 ## 단독 글
 
