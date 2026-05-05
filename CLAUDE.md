@@ -10,21 +10,28 @@ npm run docs:build    # 프로덕션 빌드
 npm run docs:preview  # 빌드 결과 미리보기
 ```
 
+## Deploy
+
+`main` 브랜치 push → `.github/workflows/deploy.yml` → GitHub Pages 배포 (`base: '/engineering-site/'`).
+
 ## Structure
 
 - `archive/` — 기술 문서 아카이브 (architecture, backend, infra, case-studies)
 - `blog/` — 블로그 (시리즈 + 단독 글)
 - `blog/<series-name>/` — 시리즈 디렉토리 (index.md + chNN.md)
+- `public/` — 정적 에셋 (이미지 등)
 - `.vitepress/config.mts` — 사이트 설정, nav, sidebar
 
-## Blog Writing Conventions
+## Writing Conventions
 
-- 블로그 글은 **한국어**로 작성한다
-- 문체: ~입니다/~습니다 체, 대화체 유지
+- **한국어**로 작성한다
+- 문체: ~입니다/~습니다 체
 - 톤: 개념을 담백하게 서술. "초심자" 프레이밍, 평가적 레이블("잘못된/올바른"), 수사 의문문, 감탄 표현을 사용하지 않는다
-- Mermaid 다이어그램 활용 (`vitepress-plugin-mermaid`)
+- 코드 블록 언어 태그: 실행 가능한 코드는 언어 태그(`bash`, `mermaid` 등)를 명시하고, 의사코드/예시 데이터 형태는 태그 없이 작성한다
+- 다른 챕터/문서 참조는 텍스트 참조만 사용한다 (`1장에서는...`, `§3에서`). markdown 링크는 사용하지 않는다
+- Mermaid는 구조적 관계(흐름, 계층, 레이아웃)에 한해 사용한다. 같은 정보를 표나 문장으로 충분히 전달할 수 있으면 생략한다 (`vitepress-plugin-mermaid`)
 
-## Blog Content Constitution
+## Content Constitution
 
 글의 구조와 내용을 작성할 때 다음 원칙을 따른다.
 
@@ -49,12 +56,52 @@ npm run docs:preview  # 빌드 결과 미리보기
 - 섹션 순서는 교과서 목차가 아니라 **논증 흐름**을 따른다
 - 해결 기준(예: 서비스 분리 원칙)은 문제 직후에 배치하고, 통신 방식은 분리 이후에 다룬다
 
+## Style Constitution
+
+글의 형식과 시각적 표현을 결정하는 규칙. Content Constitution이 "무엇을 어떤 흐름으로" 다룬다면, Style Constitution은 "어떻게 보여줄지"를 다룬다.
+
+### 문서 구조
+- 제목(H1)
+  - 시리즈 챕터: `# 제N장. <제목>`
+  - 단독 글: `# <제목>`
+- 섹션 번호: `## 2.1`, `### 2.1.1` 형식의 계층 번호를 사용한다
+- 도입부: 챕터별 판단. "장의 목표" · "전제와 범위" 같은 명시적 도입 블록을 둘 수도 있고, 한두 단락의 전환 문장으로 시작할 수도 있다
+- 마무리
+  - `## N. 요약` — 핵심 개념 정리 (테이블 또는 번호 목록)
+  - 필요 시 `## 실습 해설` — 직접 따라 해볼 수 있는 단계별 절차 추가
+
+### 개념 제시
+- 정의는 **예시 + 다이어그램**을 우선한다. 새로운 복합 개념을 처음 소개할 때 특히 그렇다
+- 비유는 직관적 이해에 결정적으로 도움이 될 때만 사용한다. 모든 개념마다 비유를 붙이지 않는다
+- 한국어/영어 표기 규칙
+  - **한국어 표기**: 한국 엔지니어가 자연스럽게 한국어로 말하는 용어 (`파티션`, `셸`, `이커머스`, `커널`)
+  - **영어 + 한 번의 한글 풀이**: 독자가 영어 명칭을 익혀야 하는 명명된 개념. 첫 등장에서 `**Stream-Table Duality**(스트림-테이블 이중성)` 형식으로 표기하고 이후에는 영어만 사용한다
+  - **영어만 사용**: 한국 엔지니어가 한국어 대화 중에도 영어로 부르는 용어 (`Compaction`, `fork`, `Bounded Context`). 한글 풀이를 붙이지 않는다. 약어는 한 번 풀어쓴다 (`**ECST**(Event-Carried State Transfer)`)
+
+### 시리즈 전용
+- 챕터 제목은 `# 제N장. <제목>` 형식
+- 챕터 간 예시 연속성(같은 시나리오·식별자 재사용)은 강제하지 않는다. 챕터 단위로 일관되면 충분하다
+
 ## Series Workflow (새 챕터 추가 시)
 
-1. `blog/<series>/chNN.md` 생성 (series, chapter frontmatter 포함)
+1. `blog/<series>/chNN.md` 생성 (frontmatter는 아래 참조)
 2. `.vitepress/config.mts` — 시리즈 sidebar에 챕터 항목 추가
 3. `blog/<series>/index.md` — 테이블에서 해당 장 링크 추가, "예정" → "완료"
 4. `blog/index.md` — 진행 카운트 업데이트
+
+### 챕터 frontmatter
+
+```yaml
+title: "<챕터 제목>"
+description: "<요약>"
+series: "<series-name>"
+chapter: <N>
+```
+
+### 시리즈 index.md 포맷
+
+- frontmatter: `title`, `description`, `prev: false`, `next: false`
+- 본문: `| 장 | 제목 | 상태 |` 테이블. 상태는 `완료` / `예정`
 
 ## Sidebar Config
 
