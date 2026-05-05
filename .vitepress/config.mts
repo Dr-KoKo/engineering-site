@@ -91,6 +91,14 @@ export default withMermaid(
             ],
           },
           {
+            text: 'ROS 2',
+            collapsed: false,
+            items: [
+              { text: 'Overview', link: '/archive/ros2/' },
+              { text: 'Composition과 실행 단위의 분리', link: '/archive/ros2/composition' },
+            ],
+          },
+          {
             text: 'Case Studies',
             collapsed: false,
             items: [
